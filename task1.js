@@ -1,5 +1,5 @@
 let jariJari = 14
-let pi
+let pi = 3.14
 
 if(jariJari % 7 === 0){
     pi = 22/7
