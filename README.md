@@ -5,7 +5,7 @@
 flowchart TD
 
 start@{"shape": circle, "label": "Mulai"}
-jarijari@{"shape": rectangle, "label": jariJari = 14}
+jarijari@{"shape": lean-l, "label":"Input: jariJari = 14"}
 pi@{"shape": rectangle, "label": pi = 22/7}
 circumference@{"shape": rectangle, "label": keliling = 2 * pi * jariJari}
 area@{"shape": rectangle, "label": luas = pi * jariJari * jariJari}
