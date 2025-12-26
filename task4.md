@@ -31,7 +31,7 @@ outputCelciusToKelvin@{"shape": lean-l, "label":"Output: #quot;Konversi suhu ber
 %% from Reamur to other
 
 isReamurToCelcius@{"shape": diamond, "label": "tempSource === #quot;reamur#quot; && tempDestination === #quot;celcius#quot;"}
-outputCelciusToReamur@{"shape": lean-l, "label":"Output: #quot;Konversi suhu bernilai #quot; + temp + #quot;dari Reamur ke Celcius adalah #quot; + temp *= 5/4"}
+outputReamurToCelcius@{"shape": lean-l, "label":"Output: #quot;Konversi suhu bernilai #quot; + temp + #quot;dari Reamur ke Celcius adalah #quot; + temp *= 5/4"}
 
 isReamurToFahrenheit@{"shape": diamond, "label": "tempSource === #quot;reamur#quot; && tempDestination === #quot;fahrenheit#quot;"}
 outputReamurToFahrenheit@{"shape": lean-l, "label":"Output: #quot;Konversi suhu bernilai #quot; + temp + #quot;dari Reamur ke Fahrenheit adalah #quot; + temp = temp * 9/4 + 32"}
@@ -55,19 +55,24 @@ isCelciusToReamur--False-->isCelciusToFahrenheit--True-->outputCelciusToFahrenhe
 %% Celcius to Kelvin
 isCelciusToFahrenheit--False-->isCelciusToKelvin--True-->outputCelciusToKelvin-->stop
 
+%% To Reamur Section 
+isCelciusToKelvin--False-->isReamurToCelcius
+
 %% Reamur
 
 %% Reamur To Celcius
-isReamurToCelcius--True-->outputReamurToCelcisReamurToCelcius-->stop
+isReamurToCelcius--True-->outputReamurToCelcius-->stop
+isReamurToCelcius--False-->isReamurToFahrenheit
 
 %% Reamur to Fahrenheit
-isReamurToReamur--False-->isReamurToFahrenheit--True-->outputReamurToFahrenheit-->stop
+isReamurToFahrenheit--True-->outputReamurToFahrenheit-->stop
+isReamurToFahrenheit--False-->isReamurToKelvin
 
 %% Reamur to Kelvin
-isReamurToFahrenheit--False-->isReamurToKelvin--True-->outputReamurToKelvin-->stop
+isReamurToKelvin--True-->outputReamurToKelvin-->stop
 
 %% Not a choice nice try
-isCelciusToKelvin--False-->outputOtherToOther-->stop
+
 
 isNumberTemp--False-->isNumberTempFalse-->stop
 ```
