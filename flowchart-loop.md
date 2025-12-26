@@ -5,7 +5,7 @@
 flowchart TD
 
 start@{"shape": circle, "label": "Mulai"}
-init@{"shape": rectangle, "label": "x = 1"}
+init@{"shape": lean-l, "label": "Input: x = 1"}
 isxLtTen@{"shape": diamond, "label": "x <= 10"}
 isxLtTenTrue@{"shape": lean-l, "label": "Output: x"}
 isxEqFive@{"shape": diamond, "label": "x === 5"}
