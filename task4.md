@@ -39,14 +39,27 @@ outputReamurToFahrenheit@{"shape": lean-l, "label":"Output: #quot;Konversi suhu 
 isReamurToKelvin@{"shape": diamond, "label": "tempSource === #quot;reamur#quot; && tempDestination === #quot;kelvin#quot;"}
 outputReamurToKelvin@{"shape": lean-l, "label":"Output: #quot;Konversi suhu bernilai #quot; + temp + #quot;dari Reamur ke Kelvin adalah #quot; + temp = temp * 5/4 + 273.15"}
 
+%% from Fahrenheit to other
+
+isFahrenheitToCelcius@{"shape": diamond, "label": "tempSource === #quot;Fahrenheit#quot; && tempDestination === #quot;celcius#quot;"}
+outputFahrenheitToCelcius@{"shape": lean-l, "label":"Output: #quot;Konversi suhu bernilai #quot; + temp + #quot;dari Fahrenheit ke Celcius adalah #quot; + temp = (temp - 32) * 5/9"}
+
+isFahrenheitToReamur@{"shape": diamond, "label": "tempSource === #quot;Fahrenheit#quot; && tempDestination === #quot;reamur#quot;"}
+outputFahrenheitToReamur@{"shape": lean-l, "label":"Output: #quot;Konversi suhu bernilai #quot; + temp + #quot;dari Fahrenheit ke Reamur adalah #quot; + temp = (temp - 32) * 4/9"}
+
+isFahrenheitToKelvin@{"shape": diamond, "label": "tempSource === #quot;Fahrenheit#quot; && tempDestination === #quot;kelvin#quot;"}
+outputFahrenheitToKelvin@{"shape": lean-l, "label":"Output: #quot;Konversi suhu bernilai #quot; + temp + #quot;dari Fahrenheit ke Kelvin adalah #quot; + temp = (temp + 459.67) + 5/9"}
+
+
+%% NaO Not an Option 
 outputOtherToOther@{"shape": lean-l, "label": "Output: #quot;Pilihan sumber atau tujuan tidak valid#quot;"}
 
 
 %% ===================================================
 start-->iTemp-->isNumberTemp--True-->isCelciusToReamur
 
-%%Celcius
-%% Celcius To Reamur
+%% Celcius
+%% Celcius to Reamur
 isCelciusToReamur--True-->outputCelciusToReamur-->stop
 
 %% Celcius to Fahrenheit
@@ -60,7 +73,7 @@ isCelciusToKelvin--False-->isReamurToCelcius
 
 %% Reamur
 
-%% Reamur To Celcius
+%% Reamur to Celcius
 isReamurToCelcius--True-->outputReamurToCelcius-->stop
 isReamurToCelcius--False-->isReamurToFahrenheit
 
@@ -71,7 +84,23 @@ isReamurToFahrenheit--False-->isReamurToKelvin
 %% Reamur to Kelvin
 isReamurToKelvin--True-->outputReamurToKelvin-->stop
 
-%% Not a choice nice try
+%% To Fahrenheit Section 
+isReamurToKelvin--False-->isFahrenheitToCelcius
+
+%% Fahrenheit
+
+%% Fahrenheit to Celcius
+isFahrenheitToCelcius--True-->outputFahrenheitToCelcius-->stop
+isFahrenheitToCelcius--False-->isFahrenheitToReamur
+
+%% Fahrenheit to Reamur
+isFahrenheitToReamur--True-->outputFahrenheitToReamur-->stop
+isFahrenheitToReamur--False-->isFahrenheitToKelvin
+
+%% Fahrenheit to Kelvin
+isFahrenheitToKelvin--True-->outputFahrenheitToKelvin-->stop
+
+%% Not an Option nice try
 
 
 isNumberTemp--False-->isNumberTempFalse-->stop
