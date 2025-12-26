@@ -8,14 +8,11 @@ iTemp@{"shape": lean-l, "label": "Input: temp,tempSource,tempDestination"}
 stop@{"shape": dbl-circ, "label": "Selesai"}
 isNumberTemp@{"shape": diamond, "label": typeof temp === 'number'}
 isNumberTempFalse@{"shape": rectangle, "label": "Output: #quot;Angka suhu tidak valid coba lagi!#quot;"}
-isCelciusToReamur@{"shape": diamond, "label": "tempSource === #quot;celcius#quot; && tempDestination === #quot;reamur#quot;"}
-outputCelciusToReamur@{"shape": rectangle, "label":"Output: #quot;Konversi suhu bernilai #quot; + temp + #quot;dari Celcius ke Reamur adalah #quot; + temp *= 4/5"}
 
-isCelciusToFahrenheit@{"shape": diamond, "label": "tempSource === #quot;celcius#quot; && tempDestination === #quot;fahrenheit#quot;"}
-outputCelciusToFahrenheit@{"shape": rectangle, "label":"Output: #quot;Konversi suhu bernilai #quot; + temp + #quot;dari Celcius ke Fahrenheit adalah #quot; + temp = temp * 9/5 + 32"}
+isTempSourceNotEqualTempDestination@{"shape": diamond, "label": tempSource !== tempDestination}
+isTempSourceEqualTempDestinationFalse@{"shape": rectangle, "label": "Output: #quot;Satuan unit asal tidak boleh sama dengan satuan unit yang sama dengan satuan unit tujuan#quot;"}
 
-isCelciusToKelvin@{"shape": diamond, "label": "tempSource === #quot;celcius#quot; && tempDestination === #quot;kelvin#quot;"}
-outputCelciusToKelvin@{"shape": rectangle, "label":"Output: #quot;Konversi suhu bernilai #quot; + temp + #quot;dari Celcius ke Kelvin adalah #quot; + temp = temp + 273.15"}
+
 
 %% from celcius to other
 
@@ -67,7 +64,7 @@ outputOtherToOther@{"shape": lean-l, "label": "Output: #quot;Pilihan sumber atau
 
 
 %% ===================================================
-start-->iTemp-->isNumberTemp--True-->isCelciusToReamur
+start-->iTemp-->isNumberTemp--True-->isTempSourceNotEqualTempDestination--True-->isCelciusToReamur
 
 %% Celcius
 %% Celcius to Reamur
@@ -131,4 +128,5 @@ isKelvinToFahrenheit--True-->outputKelvinToFahrenheit-->stop
 isKelvinToFahrenheit--False-->outputOtherToOther-->stop
 
 isNumberTemp--False-->isNumberTempFalse-->stop
+isTempSourceNotEqualTempDestination--False-->isTempSourceEqualTempDestinationFalse-->stop
 ```
