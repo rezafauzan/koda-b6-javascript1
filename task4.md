@@ -50,6 +50,17 @@ outputFahrenheitToReamur@{"shape": lean-l, "label":"Output: #quot;Konversi suhu 
 isFahrenheitToKelvin@{"shape": diamond, "label": "tempSource === #quot;Fahrenheit#quot; && tempDestination === #quot;kelvin#quot;"}
 outputFahrenheitToKelvin@{"shape": lean-l, "label":"Output: #quot;Konversi suhu bernilai #quot; + temp + #quot;dari Fahrenheit ke Kelvin adalah #quot; + temp = (temp + 459.67) + 5/9"}
 
+%% from Kelvin to other
+
+isKelvinToCelcius@{"shape": diamond, "label": "tempSource === #quot;Kelvin#quot; && tempDestination === #quot;celcius#quot;"}
+outputKelvinToCelcius@{"shape": lean-l, "label":"Output: #quot;Konversi suhu bernilai #quot; + temp + #quot;dari Kelvin ke Celcius adalah #quot; + temp = temp - 273.15"}
+
+isKelvinToReamur@{"shape": diamond, "label": "tempSource === #quot;Kelvin#quot; && tempDestination === #quot;reamur#quot;"}
+outputKelvinToReamur@{"shape": lean-l, "label":"Output: #quot;Konversi suhu bernilai #quot; + temp + #quot;dari Kelvin ke Reamur adalah #quot; + temp = (temp - 273.15) * 4/5"}
+
+isKelvinToFahrenheit@{"shape": diamond, "label": "tempSource === #quot;Kelvin#quot; && tempDestination === #quot;Fahrenheit#quot;"}
+outputKelvinToFahrenheit@{"shape": lean-l, "label":"Output: #quot;Konversi suhu bernilai #quot; + temp + #quot;dari Kelvin ke Fahrenheit adalah #quot; + temp = temp * 9/5 - 459.67"}
+
 
 %% NaO Not an Option 
 outputOtherToOther@{"shape": lean-l, "label": "Output: #quot;Pilihan sumber atau tujuan tidak valid#quot;"}
@@ -100,8 +111,24 @@ isFahrenheitToReamur--False-->isFahrenheitToKelvin
 %% Fahrenheit to Kelvin
 isFahrenheitToKelvin--True-->outputFahrenheitToKelvin-->stop
 
-%% Not an Option nice try
+%% To Kelvin Section 
+isFahrenheitToKelvin--False-->isKelvinToCelcius
 
+%% Kelvin
+
+%% Kelvin to Celcius
+isKelvinToCelcius--True-->outputKelvinToCelcius-->stop
+isKelvinToCelcius--False-->isKelvinToReamur
+
+%% Kelvin to Reamur
+isKelvinToReamur--True-->outputKelvinToReamur-->stop
+isKelvinToReamur--False-->isKelvinToFahrenheit
+
+%% Kelvin to Fahrenheit
+isKelvinToFahrenheit--True-->outputKelvinToFahrenheit-->stop
+
+%% Not an Option nice try
+isKelvinToFahrenheit--False-->outputOtherToOther-->stop
 
 isNumberTemp--False-->isNumberTempFalse-->stop
 ```
