@@ -13,7 +13,7 @@ isxEqFiveTrue@{"shape": rectangle, "label": "x = 10"}
 xpp@{"shape": rectangle, "label": "x++"}
 stop@{"shape": dbl-circ, "label": "Selesai"}
 
-start-->init-->isxLtTen--True-->isxLtTenTrue-->isxEqFive--False-->ipp-->isxLtTen
+start-->init-->isxLtTen--True-->isxLtTenTrue-->isxEqFive--False-->xpp-->isxLtTen
 isxEqFive--True-->isxEqFiveTrue-->xpp
 isxLtTen--False-->stop
 ```
